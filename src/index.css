@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root {
+  --bg: #f7f6f3;
+  --fg: #1c1c1e;
+  --muted: #68686d;
+  --accent: #c9432b;
+  --heading: 'Inter', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body, #root { height: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+::selection { background: var(--accent); color: var(--bg); }
+
+/* entrance */
+@keyframes fade {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* scene animations */
+.gear {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: spin 9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.bob-a {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: bob 2.4s ease-in-out infinite;
+}
+.bob-b {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: bob 2.4s ease-in-out infinite;
+  animation-delay: -1.2s;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-7px); }
+}
+
+.blink {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: blink 4s ease-in-out infinite;
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: scaleY(1); }
+  96%           { transform: scaleY(0.1); }
+}
+
+.wrench {
+  transform-box: fill-box;
+  transform-origin: bottom right;
+  animation: wiggle 2s ease-in-out infinite;
+}
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  50%      { transform: rotate(-16deg); }
+}
+
+.antenna {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.3; }
+}
+
+/* drifting background shapes */
+.shape {
+  position: absolute;
+  opacity: 0.5;
+  animation: drift linear infinite;
+}
+@keyframes drift {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: 0.5; }
+  90%  { opacity: 0.5; }
+  100% { transform: translateY(-120vh) rotate(220deg); opacity: 0; }
+}
